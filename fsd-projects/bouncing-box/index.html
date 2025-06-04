@@ -36,7 +36,7 @@
 		(function () {
 			'use strict'
 			/* global jQuery */
-
+            
 			//////////////////////////////////////////////////////////////////
 			/////////////////// SETUP DO NOT DELETE //////////////////////////
 			//////////////////////////////////////////////////////////////////
@@ -46,7 +46,7 @@
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
 
 			// Every 50 milliseconds, call the update Function (see below)
-			setInterval(update, 50);
+			setInterval(update, 50); 
 
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
 			box.on('click', handleBoxClick);
@@ -67,6 +67,10 @@
 
 			// TODO 2 - Variable declarations 
 
+			var positionX = 10;
+			var points = 0;
+			var speed =10; 
+			var randNum = math.random() * 100;
 
 
 			/* 
@@ -75,16 +79,24 @@
 			turn it around! 
 			*/
 			function update() {
-
-
-			};
-
+				moveBoxTo(positionX);
+				positionX = positionX + speed;
+				if(positionX > boardWidth) 
+				speed *= -1;
+			if (positionX < 0)
+			speed *= -1;
+			}
+		
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
 			it should increase the points total, increase the speed, and move the box to
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
+				positionX = 0;
+				points++;
+				speed = 3 * points +10;
+				changeBoxText(points);
 
 
 			};
@@ -95,6 +107,13 @@
 
 		})();
 	</script>
+</body>
+<body>
+	<style>
+		body {
+	background-image: url("background.jpg"); }
+
+</style> 
 </body>
 
 </html>

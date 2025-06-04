@@ -41,7 +41,7 @@ createPlatform(550, 180, 600, 25);
 createPlatform(150, 300, 50, 25);
 createPlatform(1350, 400, 50, 50, "red");
 
-
+console.log(platforms)
 
     // TODO 3 - Create Collectables
 
