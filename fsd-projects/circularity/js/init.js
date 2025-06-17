@@ -20,13 +20,11 @@ var init = function (window) {
     var circles = [];
 
     // TODO 2 : Create a function that draws a circle
-    function drawCircle(){
-        circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
-        physikz.addRandomVelocity(circle, canvas, 5, 5);
-        view.addChild(circle);
-        circles.push(circle);
-        game.checkCirclePosition;
-        
+    function drawCircle() {
+      circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
+      physikz.addRandomVelocity(circle, canvas, 5, 5);
+      view.addChild(circle);
+      circles.push(circle);
     }
     // TODO 3 : Call the drawCircle() function
     // drawCircle([0]);
@@ -34,12 +32,15 @@ var init = function (window) {
     // drawCircle([2]);
     // drawCircle([3]);
     // drawCircle([4]);
-    
 
     // TODO 7 : Use a loop to create multiple circles
-for (var i = 0; i < 25; i++){
-  drawCircle(100);
-}
+    for (var i = 0; i < 25; i++) {
+      drawCircle(25);
+      drawCircle(25);
+      drawCircle(25);
+      drawCircle(25);
+      
+    }
     ///////////////////
     // PROGRAM LOGIC //
     ///////////////////
@@ -51,44 +52,45 @@ for (var i = 0; i < 25; i++){
         */
     function update() {
       // TODO 4 : Update the position of each circle using physikz.updatePosition()
-      // physikz.updatePosition([0]);
-      // physikz.updatePosition([1]);
-      // physikz.updatePosition([2]);
-      // physikz.updatePosition([3]);
-      // physikz.updatePosition([4]);
+      // physikz.updatePosition(circles[0]);
+      // physikz.updatePosition(circles[1]);
+      // physikz.updatePosition(circles[2]);
+      // physikz.updatePosition(circles[3]);
+      // physikz.updatePosition(circles[4]);
       // TODO 5 : Call game.checkCirclePosition() on your circles
-      // game.checkCirclePosition(0);
-      // game.checkCirclePosition(1);
-      // game.checkCirclePosition(2);
-      // game.checkCirclePosition(3);
-      // game.checkCirclePosition(4);
-      // TODO 8 / TODO 9 : Iterate over the array
-    }
-    for (var i = 0; i < circles.length; i++){
-physikz.updatePosition(circles[i]);
-game.checkCirclePosition(circles[i]);
-    }
-    /* 
-        This Function should check the position of a circle that is passed to the 
-        Function. If that circle drifts off the screen, this Function should move
-        it to the opposite side of the screen.
-        */
-    game.checkCirclePosition = function (circle) {
-      // if the circle has gone past the RIGHT side of the screen then place it on the LEFT
-      if (circle.x > canvas.width) {
-        circle.x = 0;
+      // game.checkCirclePosition(circles[0]);
+      // game.checkCirclePosition(circles[1]);
+      // game.checkCirclePosition(circles[2]);
+      // game.checkCirclePosition(circles[3]);
+      // game.checkCirclePosition(circles[4]);
+      /* 
+      This Function should check the position of a circle that is passed to the 
+      Function. If that circle drifts off the screen, this Function should move
+      it to the opposite side of the screen.
+      */
+     game.checkCirclePosition = function (circle) {
+       // if the circle has gone past the RIGHT side of the screen then place it on the LEFT
+       if (circle.x > canvas.width) {
+         circle.x = 0;
+        }
+        
+        // TODO 6 : YOUR CODE STARTS HERE //////////////////////
+        // TODO 8 / TODO 9 : Iterate over the array
       }
-
-      // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-if (circle.x < 0){
-  circle.x =0;
-}
-if (circle.y < 0){
-  circle.y =0;
-}
-if (circle.y > canvas.height){
-  circle.y =0;
-}
+      console.log(game.checkCirclePosition)
+      for (var i = 0; i < circles.length; i++) {
+        physikz.updatePosition(circles[i]);
+        game.checkCirclePosition(circles[i]);
+      }
+      if (circle.x < 0) {
+        circle.x = canvas.width;
+      }
+      if (circle.y < 0) {
+        circle.y = canvas.height;
+      }
+      if (circle.y > canvas.height) {
+        circle.y = 0;
+      }
       // YOUR TODO 6 CODE ENDS HERE //////////////////////////
     };
 
